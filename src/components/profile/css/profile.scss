@@ -1,0 +1,81 @@
+.profile-wrapper {
+
+  .profile-img-wrapper {
+    display: flex;
+    gap: 1.2em;
+
+    @media only screen and (min-width: 768px) {
+      display: block;
+    }
+
+    .profile-img {
+      width: 80px;
+      height: 80px;
+
+      @media only screen and (min-width: 768px) {
+        width: 150px;
+        height: 150px;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+      }
+    }
+
+    .profile-name {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      @media only screen and (min-width: 768px) {
+        display: block;
+      }
+      h3 {
+        font-size: 26px;
+      }
+      p {
+        font-size: 20px;
+      }
+      h3, p {
+        padding: 0;
+        margin: 0;
+        @media only screen and (min-width: 768px) {
+          margin-top: 0.5em;
+        }
+      }
+    }
+  }
+
+  .details-wrapper {
+    .title, .nodes, .location, .desc, .repositories {
+      margin-top: 1em;
+    }
+    .title, .nodes span, .repositories span {
+      font-weight: bold;
+    }
+    .repositories {
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .nodes {
+      font-size: 14px;
+      display: flex;
+      gap: 0.8em;
+
+      .followers, .following {
+        cursor: pointer;
+      }
+    }
+    .location, .handle {
+      display: none;
+      font-size: 14px;
+      font-weight: bold;
+      margin-top: 0.5em;
+
+      @media only screen and (min-width: 768px) {
+        display: block;
+      }
+    }
+  }
+}

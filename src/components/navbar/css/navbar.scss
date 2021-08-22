@@ -1,0 +1,24 @@
+@import '../../../assets/css/colors.scss';
+
+.navbar-wrapper {
+  margin-top: 0.5em;
+  .navbar-grid-input-wrapper {
+    display: flex;
+    justify-content: flex-end;
+
+    .navbar-number-input {
+      max-width: 15%;
+      margin-left: 0.5em;
+
+      &.MuiTextField-root:focus {
+        border: none;
+        outline: none;
+        outline: 1em solid black;
+      }
+    }
+
+    .MuiOutlinedInput-input {
+      padding: 12px 14px;
+    }
+  }
+}

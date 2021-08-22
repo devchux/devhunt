@@ -1,10 +1,13 @@
-import Layout from "./shared/components/layout/Layout";
+import { BrowserRouter, Switch } from 'react-router-dom';
+import Layout from "./components/layout/Layout";
 
 function App() {
   return (
-    <>
-      <Layout />
-    </>
+    <BrowserRouter>
+      <Switch>
+        <Layout />
+      </Switch>
+    </BrowserRouter>
   );
 }
 
