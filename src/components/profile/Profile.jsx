@@ -1,3 +1,4 @@
+import { LocationOn, Twitter } from "@material-ui/icons";
 import imageLink from "../../assets/images/profile.jpg";
 import "./css/profile.scss";
 
@@ -31,8 +32,12 @@ const Profile = ({ show }) => {
             <span>0</span> following
           </div>
         </div>
-        <div className="location">Nigeria</div>
-        <div className="handle">iAmHe</div>
+        <div className="location">
+          <LocationOn style={{ fontSize: "16px" }} /> Nigeria
+        </div>
+        <div className="handle">
+          <Twitter style={{ fontSize: "16px" }} /> iAmHe
+        </div>
       </div>
     </div>
   );

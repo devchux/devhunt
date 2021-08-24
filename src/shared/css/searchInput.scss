@@ -1,16 +1,22 @@
 @import '../../assets/css/colors.scss';
 
 .widen-search-input {
-  width: 250px;
-  animation: widen-input linear;
-  animation-duration: 0.1s;
+  @media screen and (min-width: 768px) {
+    width: 250px;
+    animation: widen-input linear;
+    animation-duration: 0.1s;
+
+    @keyframes widen-input {
+      from {
+        width: 200px;
+      }
+      to {
+        width: 250px;
+      }
+    }
+  }
 }
 
-@keyframes widen-input {
-  from {
-    width: 200px;
-  }
-  to {
-    width: 250px;
-  }
+.search-input, input {
+  font-family: 'Lora', sans-serif !important;
 }

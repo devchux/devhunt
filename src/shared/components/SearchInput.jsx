@@ -13,33 +13,35 @@ const useStyles = makeStyles((theme) => ({
   textFieldNotchedOutline: {},
 }));
 
-const SearchInput = ({ value, onChange, className }) => {
+const SearchInput = ({ value, onChange, className, onSubmit }) => {
   const { onFocus, onBlur } = SearchInputHook();
   const classes = useStyles();
   return (
-    <TextField
-      className={`search-input ${className}`}
-      type="search"
-      value={value}
-      onChange={onChange}
-      variant="outlined"
-      id="input-with-icon-textfield"
-      placeholder="Search"
-      onFocus={onFocus}
-      onBlur={onBlur}
-      InputProps={{
-        classes: {
-          root: classes.textFieldRoot,
-          focused: classes.textFieldFocused,
-          notchedOutline: classes.textFieldNotchedOutline,
-        },
-        startAdornment: (
-          <InputAdornment position="start">
-            <Search />
-          </InputAdornment>
-        ),
-      }}
-    />
+    <form onSubmit={onSubmit}>
+      <TextField
+        className={`search-input ${className}`}
+        type="search"
+        value={value || ''}
+        onChange={onChange}
+        variant="outlined"
+        id="input-with-icon-textfield"
+        placeholder="Search"
+        onFocus={onFocus}
+        onBlur={onBlur}
+        InputProps={{
+          classes: {
+            root: classes.textFieldRoot,
+            focused: classes.textFieldFocused,
+            notchedOutline: classes.textFieldNotchedOutline,
+          },
+          startAdornment: (
+            <InputAdornment position="start">
+              <Search />
+            </InputAdornment>
+          ),
+        }}
+      />
+    </form>
   );
 };
 

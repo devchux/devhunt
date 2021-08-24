@@ -9,14 +9,10 @@
   }
 }
 .logo-wrapper {
-  display: flex;
   width: fit-content;
-  align-items: center;
   cursor: pointer;
-  height: 100%;
-
-  .less-than, .greater-than {
-    font-weight: 500;
-    font-size: 1.5rem;
+  height: 100%; 
+  img {
+    width: 150px;
   }
 }

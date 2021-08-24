@@ -1,24 +1,24 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { LocationCity, LocationOn } from '@material-ui/icons';
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345,
+    maxWidth: '100%',
+    maxHeight: '100%',
   },
   media: {
     height: 140,
   },
 });
 
-export default function UserCard() {
+export default function UserCard({ imageUrl, bio, name, login, profile }) {
   const classes = useStyles();
 
   return (
@@ -26,26 +26,20 @@ export default function UserCard() {
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image="/static/images/cards/contemplative-reptile.jpg"
-          title="Contemplative Reptile"
+          image={imageUrl}
+          title={name}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            Lizard
+            {name || login}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-            across all continents except Antarctica
+          <Typography gutterBottom variant="caption" component="p">
+            {login}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small">
-          <LocationOn /> Nigeria
-        </Button>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
+        <Link onClick={() => profile(login)} to='/user'>Learn More</Link>
       </CardActions>
     </Card>
   );
