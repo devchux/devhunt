@@ -1,8 +1,6 @@
-import { Route } from "react-router-dom";
 import { Container } from "@material-ui/core";
 import Navbar from "../navbar/Navbar";
-import User from "../user/User";
-import Result from "../results/Result";
+import Routes from "../../routes/Routes";
 import { useState } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -12,25 +10,19 @@ const Layout = () => {
     userCount: "",
     nodes: [],
   });
-  const [profile, setProfile] = useState("");
+  const [profile, setProfile] = useState({
+    login: '',
+    repositories: 0,
+    followers: 0,
+    following: 0,
+  });
   return (
     <Container maxWidth="md" className="layout-container">
       <Navbar setSearchResults={setSearchResults} />
-      <Route
-        path="/"
-        exact
-        render={(props) => (
-          <Result
-            {...props}
-            searchResults={searchResults}
-            setProfile={setProfile}
-          />
-        )}
-      />
-      <Route
-        path="/user"
-        exact
-        render={(props) => <User {...props} profile={profile} />}
+      <Routes
+        searchResults={searchResults}
+        setProfile={setProfile}
+        profile={profile}
       />
       <ToastContainer autoClose={1500} />
     </Container>

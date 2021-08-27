@@ -10,6 +10,15 @@ export const SEARCH = gql`
           name
           location
           login
+          repositories {
+            totalCount
+          }
+          followers {
+            totalCount
+          }
+          following {
+            totalCount
+          }
         }
       }
     }

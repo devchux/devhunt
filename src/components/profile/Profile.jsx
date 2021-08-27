@@ -2,41 +2,39 @@ import { LocationOn, Twitter } from "@material-ui/icons";
 import imageLink from "../../assets/images/profile.jpg";
 import "./css/profile.scss";
 
-const Profile = ({ show }) => {
+const Profile = ({ show, data }) => {
   return (
     <div className="profile-wrapper">
       <div className="profile-img-wrapper">
         <div className="profile-img">
-          <img src={imageLink} alt="" />
+          <img src={data.avatarUrl} alt={data.name || data.login} />
         </div>
         <div className="profile-name">
-          <h3>Full Name</h3>
-          <p>Username</p>
+          <h3>{data.name || data.login}</h3>
+          <p>{data.login}</p>
         </div>
       </div>
       <div className="details-wrapper">
         <div className="title">Software Engineer</div>
         <div className="desc">
-          export default export default export default export default export
-          default export default export default export default export default
-          export default{" "}
+        {data.bio}
         </div>
-        <div className="repositories" onClick={() => show("repo-list")}>
-          <span>0</span> repositories
+        <div className="repositories" onClick={() => show("repositories")}>
+          <span>{data.repositories.totalCount}</span> repositories
         </div>
         <div className="nodes">
           <div className="followers" onClick={() => show("followers")}>
-            <span>0</span> followers
+            <span>{data.followers.totalCount}</span> followers
           </div>
           <div className="following" onClick={() => show("following")}>
-            <span>0</span> following
+            <span>{data.following.totalCount}</span> following
           </div>
         </div>
         <div className="location">
-          <LocationOn style={{ fontSize: "16px" }} /> Nigeria
+          <LocationOn style={{ fontSize: "16px" }} /> {data.location}
         </div>
         <div className="handle">
-          <Twitter style={{ fontSize: "16px" }} /> iAmHe
+          <Twitter style={{ fontSize: "16px" }} /> {data.twitterUsername}
         </div>
       </div>
     </div>

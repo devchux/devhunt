@@ -1,0 +1,11 @@
+.repo-wrapper {
+  text-decoration: none;
+  margin: 0.5em 0;
+  display: block;
+  .MuiListItem-container {
+    position: relative;
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0.01px 0.2px 2px #111;
+  }
+}

@@ -1,7 +1,12 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const USER = gql`
-  query User($login: String!, $first: Int) {
+  query User(
+    $login: String!,
+    $repositories: Int,
+    $followers: Int,
+    $following: Int
+  ) {
     user(login: $login) {
       avatarUrl
       bio
@@ -9,7 +14,8 @@ export const USER = gql`
       location
       twitterUsername
       company
-      repositories(first: $first) {
+      login
+      repositories(first: $repositories) {
         totalCount
         nodes {
           name
@@ -18,7 +24,7 @@ export const USER = gql`
           description
         }
       }
-      followers(first: $first) {
+      followers(first: $followers) {
         totalCount
         nodes {
           name
@@ -26,7 +32,7 @@ export const USER = gql`
           login
         }
       }
-      following(first: $first) {
+      following(first: $following) {
         totalCount
         nodes {
           name
