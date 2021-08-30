@@ -8,7 +8,7 @@ export const useNav = (setSearchResults) => {
   const [searchParam, setSearchParam] = useState({
     query: "",
     type: "USER",
-    last: 30,
+    first: 100,
   });
 
   const [getUsers, { loading: searchLoading }] = useLazyQuery(SEARCH, {
