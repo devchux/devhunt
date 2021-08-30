@@ -6,7 +6,7 @@ const RepoList = ({ repositories }) => {
   return (
     <List>
       {repositories.length > 0 ? (
-        repositories.map(({ name, url, stargazerCount, description }) => (
+        repositories.reverse().map(({ name, url, stargazerCount, description }) => (
           <Repo
             key={nanoid()}
             name={name}

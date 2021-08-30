@@ -19,7 +19,7 @@ export const USER = gql`
       login
       url
       websiteUrl
-      repositories(first: $repositories) {
+      repositories(last: $repositories) {
         totalCount
         nodes {
           name
@@ -28,13 +28,13 @@ export const USER = gql`
           description
         }
       }
-      followers(first: $followers) {
+      followers(last: $followers) {
         totalCount
         nodes {
           ...totalCountsFragment,
         }
       }
-      following(first: $following) {
+      following(last: $following) {
         totalCount
         nodes {
           ...totalCountsFragment,

@@ -12,7 +12,7 @@ const Result = ({ searchResults: { nodes, userCount }, setProfile }) => {
         {userCount} developer{userCount > 1 && "s"} found.
       </p>
       <div className="grid-wrapper">
-        {nodes.map(
+        {nodes.reverse().map(
           ({
             __typename,
             avatarUrl,
