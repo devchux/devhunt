@@ -28,13 +28,13 @@ export const USER = gql`
           description
         }
       }
-      followers(last: $followers) {
+      followers(first: $followers) {
         totalCount
         nodes {
           ...totalCountsFragment,
         }
       }
-      following(last: $following) {
+      following(first: $following) {
         totalCount
         nodes {
           ...totalCountsFragment,
