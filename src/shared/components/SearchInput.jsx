@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
   textFieldNotchedOutline: {},
 }));
 
-const SearchInput = ({ value, onChange, className, onSubmit }) => {
+const SearchInput = ({ value, onChange, className, onSubmit, disabled }) => {
   const { onFocus, onBlur } = SearchInputHook();
   const classes = useStyles();
   return (
@@ -28,6 +28,7 @@ const SearchInput = ({ value, onChange, className, onSubmit }) => {
         placeholder="Search"
         onFocus={onFocus}
         onBlur={onBlur}
+        disabled={disabled || false}
         InputProps={{
           classes: {
             root: classes.textFieldRoot,

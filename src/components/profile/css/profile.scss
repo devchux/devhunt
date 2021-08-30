@@ -1,5 +1,10 @@
 .profile-wrapper {
-
+  div {
+    overflow-wrap: break-word;
+  }
+  a {
+    text-decoration: none;
+  }
   .profile-img-wrapper {
     display: flex;
     gap: 1.2em;
@@ -67,11 +72,13 @@
         cursor: pointer;
       }
     }
-    .location, .handle {
-      display: none;
+    .location, .handle, .website {
       font-size: 14px;
       font-weight: bold;
       margin-top: 1em;
+    }
+    .location, .handle {
+      display: none;
 
       @media only screen and (min-width: 768px) {
         display: block;

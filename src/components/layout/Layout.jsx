@@ -1,24 +1,25 @@
 import { Container } from "@material-ui/core";
 import Navbar from "../navbar/Navbar";
 import Routes from "../../routes/Routes";
-import { useState } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useLayout } from "./hooks/useLayout";
 
 const Layout = () => {
-  const [searchResults, setSearchResults] = useState({
-    userCount: "",
-    nodes: [],
-  });
-  const [profile, setProfile] = useState({
-    login: '',
-    repositories: 0,
-    followers: 0,
-    following: 0,
-  });
+  const {
+    searchResults,
+    setSearchResults,
+    profile,
+    setProfile,
+    match,
+  } = useLayout();
+
   return (
     <Container maxWidth="md" className="layout-container">
-      <Navbar setSearchResults={setSearchResults} />
+      <Navbar
+        setSearchResults={setSearchResults}
+        disabled={match !== null ? match.isExact : false}
+      />
       <Routes
         searchResults={searchResults}
         setProfile={setProfile}

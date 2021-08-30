@@ -1,4 +1,5 @@
 import { List } from "@material-ui/core";
+import { nanoid } from "nanoid";
 import Repo from "../../shared/components/Repo";
 
 const RepoList = ({ repositories }) => {
@@ -6,7 +7,13 @@ const RepoList = ({ repositories }) => {
     <List>
       {repositories.length > 0 ? (
         repositories.map(({ name, url, stargazerCount, description }) => (
-          <Repo name={name} url={url} stargazerCount={stargazerCount} description={name} />
+          <Repo
+            key={nanoid()}
+            name={name}
+            url={url}
+            stargazerCount={stargazerCount}
+            description={description}
+          />
         ))
       ) : (
         <center>No repositories found.</center>

@@ -7,9 +7,30 @@ body {
   -moz-osx-font-smoothing: grayscale;
   padding: 0;
   box-sizing: border-box;
-  background-color: whitesmoke;
+  background-color: $lightwhite;
 }
 
 .MuiTextField-root {
   width: 200px;
+}
+
+
+.MuiOutlinedInput-root.Mui-disabled .MuiOutlinedInput-notchedOutline {
+  background-color: $black;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.spinner {
+  width: 30px;
+  animation: loading 1.5s infinite linear;
+}
+
+@keyframes loading {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

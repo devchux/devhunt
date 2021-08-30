@@ -13,19 +13,30 @@ const Result = ({ searchResults: { nodes, userCount }, setProfile }) => {
       </p>
       <div className="grid-wrapper">
         {nodes.map(
-          ({ avatarUrl, name, login, repositories, followers, following }) => (
-            <div className="grid-item" key={nanoid()}>
-              <UserCard
-                imageUrl={avatarUrl}
-                name={name}
-                login={login}
-                profile={setProfile}
-                repositories={repositories.totalCount}
-                followers={followers.totalCount}
-                following={following.totalCount}
-              />
-            </div>
-          )
+          ({
+            __typename,
+            avatarUrl,
+            name,
+            login,
+            repositories,
+            followers,
+            following,
+          }) => {
+            if (__typename.toLowerCase() !== "user") return null;
+            return (
+              <div className="grid-item" key={nanoid()}>
+                <UserCard
+                  imageUrl={avatarUrl}
+                  name={name}
+                  login={login}
+                  profile={setProfile}
+                  repositories={repositories.totalCount}
+                  followers={followers.totalCount}
+                  following={following.totalCount}
+                />
+              </div>
+            );
+          }
         )}
       </div>
     </div>

@@ -4,7 +4,7 @@ import SearchInput from "../../shared/components/SearchInput";
 import "./css/navbar.scss";
 import { useNav } from "./hooks/useNav";
 
-const Navbar = ({ setSearchResults }) => {
+const Navbar = ({ setSearchResults, disabled }) => {
   const { setSearch, searchInput } = useNav(setSearchResults);
 
   return (
@@ -21,6 +21,7 @@ const Navbar = ({ setSearchResults }) => {
         <SearchInput
           value={searchInput}
           onChange={({ target: { value } }) => setSearch(value)}
+          disabled={disabled}
         />
       </Grid>
     </Grid>

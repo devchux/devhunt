@@ -1,6 +1,8 @@
 import { gql } from "@apollo/client";
+import { TOTAL_COUNTS_FRAGMENT } from "./fragments";
 
 export const USER = gql`
+  ${TOTAL_COUNTS_FRAGMENT}
   query User(
     $login: String!,
     $repositories: Int,
@@ -15,6 +17,8 @@ export const USER = gql`
       twitterUsername
       company
       login
+      url
+      websiteUrl
       repositories(first: $repositories) {
         totalCount
         nodes {
@@ -27,17 +31,13 @@ export const USER = gql`
       followers(first: $followers) {
         totalCount
         nodes {
-          name
-          avatarUrl
-          login
+          ...totalCountsFragment,
         }
       }
       following(first: $following) {
         totalCount
         nodes {
-          name
-          avatarUrl
-          login
+          ...totalCountsFragment,
         }
       }
     }

@@ -23,8 +23,6 @@ export const useUser = (profile) => {
     toast.error("Something went wrong!");
   }
 
-  console.log(data)
-
   return {
     component,
     setComponent,

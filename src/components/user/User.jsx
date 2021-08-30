@@ -1,12 +1,12 @@
 import { Grid, makeStyles } from "@material-ui/core";
 import Profile from "../profile/Profile";
 import Tab from "../sideComponent/Tab";
-import NodeList from "../nodes/NodeList";
 import RepoList from "../repos/RepoList";
 import { useUser } from "./hooks/useUser";
-import { Autorenew } from "@material-ui/icons";
+import { ReactComponent } from "../../assets/images/loading.svg";
+import Result from "../results/Result";
 
-const User = ({ profile }) => {
+const User = ({ profile, setProfile }) => {
   const useStyles = makeStyles({
     root: {
       marginTop: "1em",
@@ -18,8 +18,8 @@ const User = ({ profile }) => {
   });
   const TabComponent = {
     repositories: RepoList,
-    followers: NodeList,
-    following: NodeList,
+    followers: Result,
+    following: Result,
   };
 
   const { component, setComponent, data, userLoading } = useUser(profile);
@@ -28,9 +28,14 @@ const User = ({ profile }) => {
 
   const classes = useStyles();
 
-  if (userLoading) return <Autorenew />;
+  if (userLoading) return <ReactComponent className="spinner" />;
   return (
-    <Grid container className={classes.root}>
+    <Grid
+      container
+      className={classes.root}
+      justifyContent="space-between"
+      spacing={1}
+    >
       {data && (
         <>
           <Grid item sm={3}>
@@ -43,6 +48,13 @@ const User = ({ profile }) => {
                   repositories={data.user.repositories.nodes}
                   followers={data.user.followers.nodes}
                   following={data.user.following.nodes}
+                  setProfile={setProfile}
+                  searchResults={{
+                    nodes:
+                      component === "following"
+                        ? [...data.user.following.nodes]
+                        : [...data.user.followers.nodes],
+                  }}
                 />
               }
             />

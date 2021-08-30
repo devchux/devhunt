@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
+import { nanoid } from "nanoid";
 import User from "../components/user/User";
 import Result from "../components/results/Result";
 
@@ -20,11 +21,12 @@ const Routes = ({ searchResults, setProfile, profile }) => {
       <Route
         path="/user"
         exact
+        key={nanoid()}
         render={(props) =>
           !profile.login ? (
             <Redirect to="/" />
           ) : (
-            <User {...props} profile={profile} />
+            <User {...props} profile={profile} setProfile={setProfile} />
           )
         }
       />

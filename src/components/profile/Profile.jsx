@@ -1,5 +1,4 @@
-import { LocationOn, Twitter } from "@material-ui/icons";
-import imageLink from "../../assets/images/profile.jpg";
+import { Language, LocationOn, Twitter } from "@material-ui/icons";
 import "./css/profile.scss";
 
 const Profile = ({ show, data }) => {
@@ -15,26 +14,55 @@ const Profile = ({ show, data }) => {
         </div>
       </div>
       <div className="details-wrapper">
-        <div className="title">Software Engineer</div>
-        <div className="desc">
-        {data.bio}
+        <div className="title">
+          <a href={data.url} target="_blank" rel="noreferrer">
+            {data.url}
+          </a>
         </div>
+        <div className="desc">{data.bio}</div>
         <div className="repositories" onClick={() => show("repositories")}>
           <span>{data.repositories.totalCount}</span> repositories
         </div>
         <div className="nodes">
-          <div className="followers" onClick={() => show("followers")}>
+          <div
+            className="followers"
+            onClick={() => data.followers.totalCount > 0 && show("followers")}
+          >
             <span>{data.followers.totalCount}</span> followers
           </div>
-          <div className="following" onClick={() => show("following")}>
+          <div
+            className="following"
+            onClick={() => data.following.totalCount > 0 && show("following")}
+          >
             <span>{data.following.totalCount}</span> following
           </div>
         </div>
         <div className="location">
-          <LocationOn style={{ fontSize: "16px" }} /> {data.location}
+          {data.location && (
+            <>
+              <LocationOn style={{ fontSize: "16px" }} /> {data.location}
+            </>
+          )}
         </div>
         <div className="handle">
-          <Twitter style={{ fontSize: "16px" }} /> {data.twitterUsername}
+          {data.twitterUsername && (
+            <>
+              <Twitter style={{ fontSize: "16px" }} />{" "}
+              <a href={`https://twitter.com/${data.twitterUsername}`}>
+                {data.twitterUsername}
+              </a>
+            </>
+          )}
+        </div>
+        <div className="website">
+          {data.websiteUrl && (
+            <>
+              <Language style={{ fontSize: "16px" }} />{" "}
+              <a href={data.websiteUrl}>
+                {data.websiteUrl}
+              </a>
+            </>
+          )}
         </div>
       </div>
     </div>

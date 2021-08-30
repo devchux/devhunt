@@ -14,7 +14,7 @@ const Repo = ({ name, url, stargazerCount, description }) => {
         <ListItemText primary={name} secondary={description} />
         <ListItemSecondaryAction>
           <IconButton edge="end" aria-label="star">
-            <Star />
+            <Star style={{ fontSize: "16px" }} />
             <span style={{ fontSize: "14px", marginLeft: "0.2em" }}>
               {stargazerCount}
             </span>
