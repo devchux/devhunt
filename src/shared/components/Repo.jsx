@@ -5,11 +5,11 @@ import {
   ListItemText,
 } from "@material-ui/core";
 import { Star } from "@material-ui/icons";
-import '../css/repo.scss'
+import "../css/repo.scss";
 
 const Repo = ({ name, url, stargazerCount, description }) => {
   return (
-    <a href={url} className='repo-wrapper'>
+    <a href={url} className="repo-wrapper" target="_blank" rel="noreferrer">
       <ListItem>
         <ListItemText primary={name} secondary={description} />
         <ListItemSecondaryAction>

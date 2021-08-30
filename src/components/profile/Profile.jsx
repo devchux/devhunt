@@ -48,7 +48,11 @@ const Profile = ({ show, data }) => {
           {data.twitterUsername && (
             <>
               <Twitter style={{ fontSize: "16px" }} />{" "}
-              <a href={`https://twitter.com/${data.twitterUsername}`}>
+              <a
+                href={`https://twitter.com/${data.twitterUsername}`}
+                target="_blank"
+                rel="noreferrer"
+              >
                 {data.twitterUsername}
               </a>
             </>
@@ -58,9 +62,7 @@ const Profile = ({ show, data }) => {
           {data.websiteUrl && (
             <>
               <Language style={{ fontSize: "16px" }} />{" "}
-              <a href={data.websiteUrl}>
-                {data.websiteUrl}
-              </a>
+              <a href={data.websiteUrl}>{data.websiteUrl}</a>
             </>
           )}
         </div>
